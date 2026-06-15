@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from 'react';
+import DOMPurify from 'dompurify'; // Security requirement for safely rendering HTML from WordPress
 
-const PageTemplate = ({ pageSlug }) => {
+// We create a reusable component that fetches and displays WordPress page data based on the slug passed as a prop
+function PageTemplate({ pageSlug }) {
   const [pageData, setPageData] = useState(null);
-  const [loading, setLoading] = useState(true); // PDF Requirement: Loading state/message
+  const [loading, setLoading] = useState(true);
 
+  // useEffect runs this code automatically when the page loads
   useEffect(() => {
-    // Fetching data from the WordPress REST API based on the page slug
-    fetch(`https://dev-radioactive-duck.pantheonsite.io/wp-json/wp/v2/pages?slug=${pageSlug}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setPageData(data[0]); // Extracting the specific page object
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
-  }, [pageSlug]);
+    async function fetchWordPressData() {
+      try {
+        setLoading(true);
+        const apiURL = `https://dev-radioactive-duck.pantheonsite.io/wp-json/wp/v2/pages?slug=${pageSlug}`;
+        const response = await fetch(apiURL);
+        const data = await response.json();
 
-  // 1. Display loader while data is fetching (Evaluation Criterion)
+        if (data && data.length > 0) {
+          setPageData(data[0]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchWordPressData();
+  }, [pageSlug]); // Reloads automatically if the slug changes
+
   if (loading) {
     return <div className="loader">Loading data from WordPress...</div>;
   }
@@ -32,13 +39,10 @@ const PageTemplate = ({ pageSlug }) => {
   return (
     <div className="page-container">
       <h1>{pageData.title.rendered}</h1>
-      
-      {/* 2. Safely rendering the raw HTML content from WordPress (PDF Requirement) */}
-      <div 
-        dangerouslySetInnerHTML={{ __html: pageData.content.rendered }} 
-      />
+      {/* Secure HTML injection with DOMPurify */}
+      <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(pageData.content.rendered) }} />
     </div>
   );
-};
+}
 
 export default PageTemplate;

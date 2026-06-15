@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import PageTemplate from './components/PageTemplate'; // Adjust path based on your src structure
-import './App.css'; // Importing your CSS file as seen in your VS Code sidebar
+import PageTemplate from './components/PageTemplate';
+import './App.css';
 
 function App() {
   return (
@@ -14,7 +14,6 @@ function App() {
           <nav>
             <ul>
               <li className="hamburger">
-                {/* For local assets in React, place them inside the public/ directory */}
                 <img src="/ressources/images/devil-duck_icon_cropped.jpg" alt="Duck icon" />
               </li>
               <li><Link to="/description">Description</Link></li>
