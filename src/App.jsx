@@ -1,122 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import PageTemplate from './components/PageTemplate'; // Adjust path based on your src structure
+import './App.css'; // Importing your CSS file as seen in your VS Code sidebar
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <Router>
+      <div className="app-container">
+        
+        {/* HEADER & NAVIGATION (Hardcoded in React) */}
+        <header>
+          <h1 className="header1">HES-SO Vs - 64-31 - Web Development</h1>
+          <nav>
+            <ul>
+              <li className="hamburger">
+                {/* For local assets in React, place them inside the public/ directory */}
+                <img src="/ressources/images/devil-duck_icon_cropped.jpg" alt="Duck icon" />
+              </li>
+              <li><Link to="/description">Description</Link></li>
+              <li><Link to="/maquettes">Maquettes</Link></li>
+              <li><Link to="/mockup">Mockup</Link></li>
+              <li><Link to="/flux">Flux</Link></li>
+              <li><Link to="/journal-de-bord">Journal de bord</Link></li>
+            </ul>
+          </nav>
+        </header>
 
-      <div className="ticks"></div>
+        {/* DYNAMIC CONTENT (Fetched from WordPress depending on the URL) */}
+        <main>
+          <Routes>
+            {/* Default landing route redirects to description */}
+            <Route path="/" element={<PageTemplate pageSlug="description" />} />
+            
+            {/* Passing the exact WordPress slug for each page */}
+            <Route path="/description" element={<PageTemplate pageSlug="description" />} />
+            <Route path="/maquettes" element={<PageTemplate pageSlug="maquettes" />} />
+            <Route path="/mockup" element={<PageTemplate pageSlug="mockup" />} />
+            <Route path="/flux" element={<PageTemplate pageSlug="flux" />} />
+            <Route path="/journal-de-bord" element={<PageTemplate pageSlug="journal-de-bord" />} />
+            
+            {/* Fallback route if the URL does not exist */}
+            <Route path="*" element={<div>Page 404 - Not Found</div>} />
+          </Routes>
+        </main>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        {/* FOOTER (Hardcoded in React) */}
+        <footer>
+          <img id="logo" src="/ressources/images/logo.svg" alt="HES Logo" />
+        </footer>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
