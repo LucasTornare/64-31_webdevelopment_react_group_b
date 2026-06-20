@@ -21,6 +21,8 @@ function App() {
               <li><Link to="/mockup">Mockup</Link></li>
               <li><Link to="/flux">Flux</Link></li>
               <li><Link to="/journal-de-bord">Journal de bord</Link></li>
+              <li><Link to="/detailed-game-description">Detailed Game Description</Link></li>
+              <li><Link to="/result">Result</Link></li>
               <li><Link to="/links">Links</Link></li>
             </ul>
           </nav>
@@ -38,6 +40,8 @@ function App() {
             <Route path="/mockup" element={<PageTemplate pageSlug="mockup" />} />
             <Route path="/flux" element={<PageTemplate pageSlug="flux" />} />
             <Route path="/journal-de-bord" element={<PageTemplate pageSlug="journal-de-bord" />} />
+            <Route path="/detailed-game-description" element={<PageTemplate pageSlug="detailed-game-description" />} />
+            <Route path="/result" element={<PageTemplate pageSlug="result" />} />
             <Route path="/links" element={<PageTemplate pageSlug="links" />} />
             
             {/* Fallback route if the URL does not exist */}
