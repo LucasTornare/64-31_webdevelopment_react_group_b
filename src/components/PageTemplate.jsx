@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import DOMPurify from 'dompurify'; // Security requirement for safely rendering HTML from WordPress
+import React, { useState, useEffect } from "react";
+import DOMPurify from "dompurify"; // Security requirement for safely rendering HTML from WordPress
 
 // We create a reusable component that fetches and displays WordPress page data based on the slug passed as a prop
 function PageTemplate({ pageSlug }) {
@@ -12,7 +12,7 @@ function PageTemplate({ pageSlug }) {
       try {
         setLoading(true);
         const apiURL = `https://dev-radioactive-duck.pantheonsite.io/wp-json/wp/v2/pages?slug=${pageSlug}`;
-        const response = await fetch(apiURL);
+        const response = await fetch(apiURL, { cache: "no-store" });
         const data = await response.json();
 
         if (data && data.length > 0) {
@@ -40,7 +40,11 @@ function PageTemplate({ pageSlug }) {
     <div className="page-container">
       <h1>{pageData.title.rendered}</h1>
       {/* Secure HTML injection with DOMPurify */}
-      <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(pageData.content.rendered) }} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(pageData.content.rendered),
+        }}
+      />
     </div>
   );
 }
