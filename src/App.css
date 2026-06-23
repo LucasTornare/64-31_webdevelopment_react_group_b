@@ -19,4 +19,34 @@ img {
     margin: 0;
 }
 
+.wordpress-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
 
+.wordpress-content th,
+.wordpress-content td {
+  padding: 10px 15px;
+  text-align: left;
+  border: 1px solid #d2deae;
+}
+
+.wordpress-content thead tr {
+  background-color: rgb(161, 213, 5);
+  color: rgb(62, 88, 2);
+}
+
+.wordpress-content tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.wordpress-content tbody tr:nth-child(even) {
+  background-color: #f4f5f2;
+}
+
+.wordpress-content tbody tr:hover {
+  background-color: #ecf7dc;
+}

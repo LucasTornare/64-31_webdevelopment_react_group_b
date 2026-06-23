@@ -41,6 +41,7 @@ function PageTemplate({ pageSlug }) {
       <h1>{pageData.title.rendered}</h1>
       {/* Secure HTML injection with DOMPurify */}
       <div
+        className="wordpress-content"
         dangerouslySetInnerHTML={{
           __html: DOMPurify.sanitize(pageData.content.rendered),
         }}
