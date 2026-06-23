@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import PageTemplate from './components/PageTemplate';
 import './App.css';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -31,11 +32,7 @@ function App() {
           </Routes>
         </main>
 
-        {/* FOOTER (Hardcoded in React) */}
-        <footer>
-          <img id="logo" src="/ressources/images/logo.svg" alt="HES Logo" />
-        </footer>
-
+        <Footer />
       </div>
     </Router>
   );
