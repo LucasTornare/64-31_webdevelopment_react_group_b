@@ -37,7 +37,7 @@ function PageTemplate({ pageSlug }) {
   }
 
   return (
-    <div className="page-container">
+    <div className={`page-container ${pageSlug === 'description' ? 'page-left' : ''}`}>
       <h1>{pageData.title.rendered}</h1>
       {/* Secure HTML injection with DOMPurify */}
       <div

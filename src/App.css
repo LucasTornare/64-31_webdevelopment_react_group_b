@@ -20,6 +20,22 @@ img {
     margin: 0 auto;
 }
 
+.page-container {
+    text-align: center;
+}
+
+.page-left {
+    text-align: left;
+}
+
+.links-page a {
+    color: green;
+}
+
+.links-page ul {
+    list-style: none;
+}
+
 .wordpress-content table {
   width: 100%;
   border-collapse: collapse;
