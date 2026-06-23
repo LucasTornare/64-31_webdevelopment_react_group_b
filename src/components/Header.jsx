@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import './Header.css';
 
 function Header() {
+    const location = useLocation();
+
     return (
         <header>
             {/* HEADER & NAVIGATION */}
