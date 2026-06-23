@@ -9,7 +9,6 @@ function Header() {
         <header>
             {/* HEADER & NAVIGATION */}
             <img src="/ressources/images/devil-duck_icon_cropped.jpg" alt="Duck icon" />
-            <h1>HES-SO Vs - 64-31 - Web Development</h1>
             <nav>
                 <ul>
                     <li className={location.pathname === '/description' ? 'active' : ''}><Link to="/description">Description</Link></li>
