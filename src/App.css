@@ -29,11 +29,22 @@ img {
 }
 
 .links-page a {
-    color: green;
+    color: rgb(120, 151, 26);
 }
 
 .links-page ul {
     list-style: none;
+}
+
+#authors {
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 16px;
+    color: rgb(161, 154, 154);
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    text-align: right;
 }
 
 .wordpress-content table {
@@ -41,7 +52,7 @@ img {
   border-collapse: collapse;
   margin: 20px 0;
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .wordpress-content th,
