@@ -13,10 +13,11 @@ img {
 }
 
 .app-container main {
+    flex: 1;
     padding: 2rem;
     max-width: 1100px;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .wordpress-content table {
