@@ -10,19 +10,18 @@ function App() {
         
         {/* HEADER & NAVIGATION (Hardcoded in React) */}
         <header>
-          <h1 className="header1">HES-SO Vs - 64-31 - Web Development</h1>
+          <img src="/ressources/images/devil-duck_icon_cropped.jpg" alt="Duck icon" />
+          <h1>HES-SO Vs - 64-31 - Web Development</h1>
           <nav>
             <ul>
-              <li className="hamburger">
-                <img src="/ressources/images/devil-duck_icon_cropped.jpg" alt="Duck icon" />
-              </li>
+
               <li><Link to="/description">Description</Link></li>
-              <li><Link to="/maquettes">Maquettes</Link></li>
-              <li><Link to="/mockup">Mockup</Link></li>
+              <li><Link to="/mockup">Game Mockup</Link></li>
+              <li><Link to="/maquettes">Duck Mockup</Link></li>
               <li><Link to="/flux">Flux</Link></li>
-              <li><Link to="/journal-de-bord">Journal de bord</Link></li>
-              <li><Link to="/detailed-game-description">Detailed Game Description</Link></li>
-              <li><Link to="/result">Result</Link></li>
+              <li><Link to="/result">Results</Link></li>
+              <li><Link to="/detailed-game-description">Skills Overview</Link></li>
+              <li><Link to="/journal-de-bord">Logbook</Link></li>
               <li><Link to="/links">Links</Link></li>
             </ul>
           </nav>
@@ -36,12 +35,12 @@ function App() {
             
             {/* Passing the exact WordPress slug for each page */}
             <Route path="/description" element={<PageTemplate pageSlug="description" />} />
-            <Route path="/maquettes" element={<PageTemplate pageSlug="maquettes" />} />
             <Route path="/mockup" element={<PageTemplate pageSlug="mockup" />} />
+            <Route path="/maquettes" element={<PageTemplate pageSlug="maquettes" />} />
             <Route path="/flux" element={<PageTemplate pageSlug="flux" />} />
-            <Route path="/journal-de-bord" element={<PageTemplate pageSlug="journal-de-bord" />} />
-            <Route path="/detailed-game-description" element={<PageTemplate pageSlug="detailed-game-description" />} />
             <Route path="/result" element={<PageTemplate pageSlug="result" />} />
+            <Route path="/detailed-game-description" element={<PageTemplate pageSlug="detailed-game-description" />} />
+            <Route path="/journal-de-bord" element={<PageTemplate pageSlug="journal-de-bord" />} />
             <Route path="/links" element={<PageTemplate pageSlug="links" />} />
             
             {/* Fallback route if the URL does not exist */}
