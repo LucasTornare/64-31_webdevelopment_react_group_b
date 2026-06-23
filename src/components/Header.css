@@ -6,7 +6,6 @@ header img {
     width: 100%;
     height: clamp(150px, 20vw, 300px);
     object-fit: cover;
-    object-position: center;
     display: block;
 }
 
