@@ -46,10 +46,11 @@ nav li a {
 }
 
 nav li a:hover {
-    color: rgb(115, 128, 0)
+    color: rgb(62, 88, 2);
 }
 
 nav li.active a {
     font-weight: bold;
-    color: var(--accent);
+    color: rgb(62, 88, 2);
+    background-color:rgb(161, 213, 5);
 }

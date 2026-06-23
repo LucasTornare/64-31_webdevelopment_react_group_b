@@ -12,14 +12,14 @@ function Header() {
             <h1>HES-SO Vs - 64-31 - Web Development</h1>
             <nav>
                 <ul>
-                    <li><Link to="/description">Description</Link></li>
-                    <li><Link to="/mockup">Game Mockup</Link></li>
-                    <li><Link to="/maquettes">Duck Mockup</Link></li>
-                    <li><Link to="/flux">Flux</Link></li>
-                    <li><Link to="/result">Results</Link></li>
-                    <li><Link to="/detailed-game-description">Skills Overview</Link></li>
-                    <li><Link to="/journal-de-bord">Logbook</Link></li>
-                    <li><Link to="/links">Links</Link></li>
+                    <li className={location.pathname === '/description' ? 'active' : ''}><Link to="/description">Description</Link></li>
+                    <li className={location.pathname === '/mockup' ? 'active' : ''}><Link to="/mockup">Game Mockup</Link></li>
+                    <li className={location.pathname === '/maquettes' ? 'active' : ''}><Link to="/maquettes">Duck Mockup</Link></li>
+                    <li className={location.pathname === '/flux' ? 'active' : ''}><Link to="/flux">Flux</Link></li>
+                    <li className={location.pathname === '/result' ? 'active' : ''}><Link to="/result">Results</Link></li>
+                    <li className={location.pathname === '/detailed-game-description' ? 'active' : ''}><Link to="/detailed-game-description">Skills Overview</Link></li>
+                    <li className={location.pathname === '/journal-de-bord' ? 'active' : ''}><Link to="/journal-de-bord">Logbook</Link></li>
+                    <li className={location.pathname === '/links' ? 'active' : ''}><Link to="/links">Links</Link></li>
                 </ul>
             </nav>
         </header>
