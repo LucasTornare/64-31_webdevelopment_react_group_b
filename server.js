@@ -22,11 +22,16 @@ const mimeTypes = {
   '.ico': 'image/x-icon'
 };
 
+const securityHeaders = {
+  'X-Frame-Options': 'DENY',
+  'Content-Security-Policy': "frame-ancestors 'none'"
+};
+
 const server = http.createServer(function (req, res) {
   let filePath = path.join(distPath, req.url === '/' ? 'index.html' : req.url);
 
   if (!filePath.startsWith(distPath)) {
-    res.writeHead(403);
+    res.writeHead(403, securityHeaders);
     res.end('Forbidden');
     return;
   }
@@ -35,12 +40,12 @@ const server = http.createServer(function (req, res) {
     if (error) {
       fs.readFile(path.join(distPath, 'index.html'), function (fallbackError, fallbackContent) {
         if (fallbackError) {
-          res.writeHead(500);
+          res.writeHead(500, securityHeaders);
           res.end('Could not load index.html');
           return;
         }
 
-        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.writeHead(200, { ...securityHeaders, 'Content-Type': 'text/html' });
         res.end(fallbackContent);
       });
 
@@ -50,7 +55,7 @@ const server = http.createServer(function (req, res) {
     const extname = path.extname(filePath);
     const contentType = mimeTypes[extname] || 'application/octet-stream';
 
-    res.writeHead(200, { 'Content-Type': contentType });
+    res.writeHead(200, { ...securityHeaders, 'Content-Type': contentType });
     res.end(content);
   });
 });
